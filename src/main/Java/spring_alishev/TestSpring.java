@@ -13,7 +13,6 @@ public class TestSpring {
         System.out.println(player1);
         System.out.println(player2);
 
-
         context.close();
     }
 }
