@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:property-placeholder location="classpath:info.properties"/>
+
+    <bean id="test" class="spring_dmdev.model.User">
+        <property name="name" value="Dima"/>
+        <property name="age" value="88"/>
+    </bean>
+
+
+    <bean id="pool1" class="spring_dmdev.database.pool.ConnectionPool" scope="prototype">
+        <constructor-arg value="postgres"/>
+        <constructor-arg value="10"/>
+        <constructor-arg>
+            <list>
+                <value>--arg1=value1</value>
+                <value>--arg2=value2</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg>
+            <map>
+                <entry key="url" value="${person.name}"/>
+                <entry key="url1" value="${person.age}"/>
+                <entry key="url2" value="postgres2"/>
+                <entry key="url3" value="#{test}"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+
+</beans>
